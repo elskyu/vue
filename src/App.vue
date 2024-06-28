@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <nav v-if="showNavbar" class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
       <div class="container">
         <router-link :to="{ name: 'home' }" class="navbar-brand">HOME</router-link>
         <button
@@ -17,24 +17,41 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <router-link :to="{ name: 'posts.index' }" class="nav-link active" aria-current="page">POSTS</router-link
-              >
+              <router-link :to="{ name: 'posts.index' }" class="nav-link active" aria-current="page">POSTS</router-link>
             </li>
           </ul>
-          <!-- <ul class="navbar-nav ms-auto mb-2 mb-lg-0" role="search">
-            <a
-              href="https://santrikoding.com"
-              target="_blank"
-              class="btn btn-success"
-              >SANTRIKODING.COM</a
-            >
-          </ul> -->
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0" role="search">
+            <a @click="logout" class="btn btn-success">LOGOUT</a>
+          </ul>
         </div>
       </div>
     </nav>
 
     <!--- render router view -->
     <router-view></router-view>
-
   </div>
 </template>
+
+<script>
+import { computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+
+export default {
+  setup() {
+    const route = useRoute();
+    const router = useRouter();
+
+    const showNavbar = computed(() => route.name !== 'login');
+
+    const logout = () => {
+      localStorage.removeItem('auth'); // Example of clearing authentication
+      router.push({ name: 'login' });
+    };
+
+    return {
+      showNavbar,
+      logout,
+    };
+  }
+}
+</script>

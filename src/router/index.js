@@ -36,7 +36,7 @@ const router = createRouter({
     routes, // <-- routes,
 })
 
-// Define a global navigation guard
+// // Define a global navigation guard
 // router.beforeEach((to, from, next) => {
 //     // Check if the user is logged in
 //     const isAuthenticated = localStorage.getItem('auth'); // example check

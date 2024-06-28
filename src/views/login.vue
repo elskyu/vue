@@ -46,7 +46,7 @@ const handleLogin = async () => {
             <div class="col-md-6">
                 <div class="card border-0 rounded shadow">
                     <div class="card-body">
-                        <h4 class="card-title text-center mb-4">Login</h4>
+                        <h4 class="card-title text-center mb-4">LOGIN</h4>
                         <form @submit.prevent="handleLogin">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
@@ -56,8 +56,9 @@ const handleLogin = async () => {
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" v-model="password" required>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                            <button type="submit" class="btn btn-primary w-100">LOGIN</button>
                         </form>
+                        <h6 style="margin-top: 20px; text-align: right; ">REGISTER</h6>
                     </div>
                 </div>
             </div>
