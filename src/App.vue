@@ -1,3 +1,30 @@
+<script>
+import { computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+
+export default {
+  setup() {
+    const route = useRoute();
+    const router = useRouter();
+
+    const showNavbar = computed(() => {
+        return route.name !== 'login' && route.name !== 'register'; // Tambahkan kondisi untuk halaman register
+});
+
+    const logout = () => {
+      localStorage.removeItem('auth'); // Example of clearing authentication
+      router.push({ name: 'login' });
+    };
+
+    return {
+      showNavbar,
+      logout,
+    };
+  }
+}
+</script>
+
+
 <template>
   <div>
     <nav v-if="showNavbar" class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -32,26 +59,3 @@
   </div>
 </template>
 
-<script>
-import { computed } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-
-export default {
-  setup() {
-    const route = useRoute();
-    const router = useRouter();
-
-    const showNavbar = computed(() => route.name !== 'login');
-
-    const logout = () => {
-      localStorage.removeItem('auth'); // Example of clearing authentication
-      router.push({ name: 'login' });
-    };
-
-    return {
-      showNavbar,
-      logout,
-    };
-  }
-}
-</script>

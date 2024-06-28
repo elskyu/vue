@@ -58,7 +58,9 @@ const handleLogin = async () => {
                             </div>
                             <button type="submit" class="btn btn-primary w-100">LOGIN</button>
                         </form>
-                        <h6 style="margin-top: 20px; text-align: right; ">REGISTER</h6>
+                        <router-link :to="{ name: 'register' }" class="d-block mt-3 text-end">
+                            REGISTER
+                        </router-link>
                     </div>
                 </div>
             </div>
