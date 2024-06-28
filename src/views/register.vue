@@ -39,7 +39,7 @@ const handleRegister = async () => {
       <div class="col-md-6">
         <div class="card border-0 rounded shadow">
           <div class="card-body">
-            <h4 class="card-title text-center mb-4">Register</h4>
+            <h4 class="card-title text-center mb-4">REGISTER</h4>
             <form @submit.prevent="handleRegister">
               <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -57,7 +57,7 @@ const handleRegister = async () => {
                 <label for="confirmPassword" class="form-label">Confirm Password</label>
                 <input type="password" class="form-control" id="confirmPassword" v-model="confirmPassword" required>
               </div> -->
-              <button type="submit" class="btn btn-primary w-100">Register</button>
+              <button type="submit" class="btn btn-primary w-100">REGISTER</button>
             </form>
           </div>
         </div>

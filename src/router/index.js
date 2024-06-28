@@ -32,6 +32,11 @@ const routes = [
         path: '/register',
         name: 'register',
         component: () => import(/* webpackChunkName: "register" */ '../views/register.vue')
+    },
+    {
+        path: '/pegawai',
+        name: 'pegwai.dashboard',
+        component: () => import( /* webpackChunkName: "dashboard" */ '../views/pegawai/dashboard.vue')
     }
 ]
 
@@ -40,19 +45,5 @@ const router = createRouter({
     history: createWebHistory(),
     routes, // <-- routes,
 })
-
-// // Define a global navigation guard
-// router.beforeEach((to, from, next) => {
-//     // Check if the user is logged in
-//     const isAuthenticated = localStorage.getItem('auth'); // example check
-
-//     if (to.name !== 'login' && !isAuthenticated) {
-//         // If the user is not authenticated and trying to access a protected route, redirect to login
-//         next({ name: 'login' });
-//     } else {
-//         // Allow the navigation
-//         next();
-//     }
-// });
 
 export default router

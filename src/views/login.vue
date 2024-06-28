@@ -3,34 +3,37 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 
-// Define state for email and password
 const email = ref('');
 const password = ref('');
-
-// Get router instance
 const router = useRouter();
 
-// Function to handle login
 const handleLogin = async () => {
     try {
-        // Send a POST request to the login endpoint
+        if (!email.value || !password.value) {
+            alert('Please enter both email and password.');
+            return;
+        }
+
         const response = await axios.post('http://localhost:8000/api/login', {
             email: email.value,
             password: password.value
         });
 
-        // If login is successful, save the token and user data
         if (response.data.success) {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('user', JSON.stringify(response.data.user));
+            localStorage.setItem('userType', response.data.userType); // Menyimpan tipe pengguna
 
-            // Redirect the user to the home page
-            router.push({ name: 'home' });
+            // Arahkan berdasarkan tipe pengguna
+            if (response.data.userType === 'pegawai') {
+                router.push({ name: 'home' });
+            } else {
+                router.push({ name: 'posts.index' });
+            }
         } else {
             alert(response.data.message);
         }
     } catch (error) {
-        // Handle error
         if (error.response && error.response.data) {
             alert(error.response.data.message);
         } else {
@@ -39,6 +42,7 @@ const handleLogin = async () => {
     }
 };
 </script>
+
 
 <template>
     <div class="container mt-5">
