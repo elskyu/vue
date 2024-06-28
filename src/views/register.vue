@@ -50,8 +50,8 @@ const handleRegister = async () => {
                 <input type="email" class="form-control" id="email" v-model="email" required>
               </div>
               <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" v-model="password" required>
+                <label for="password" class="form-label">Password</label>              
+                <input placeholder="minimal 8 karakter" type="password" class="form-control" id="password" v-model="password" required>
               </div>
               <!-- <div class="mb-3">
                 <label for="confirmPassword" class="form-label">Confirm Password</label>
