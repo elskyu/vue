@@ -22,7 +22,10 @@ const handleLogin = async () => {
         if (response.data.success) {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('user', JSON.stringify(response.data.user));
-            localStorage.setItem('userType', response.data.userType); // Menyimpan tipe pengguna
+            localStorage.setItem('userType', response.data.userType);
+
+            // Tambahkan log untuk memeriksa nilai userType
+            console.log('User Type:', response.data.userType);
 
             // Arahkan berdasarkan tipe pengguna
             if (response.data.userType === 'pegawai') {
@@ -42,7 +45,6 @@ const handleLogin = async () => {
     }
 };
 </script>
-
 
 <template>
     <div class="container mt-5">
